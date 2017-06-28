@@ -21,7 +21,7 @@ function getLowestNodeVersion(range) {
 }
 
 function createPreset(context, opts) {
-	const options = opts === undefined ? {} : opts
+	const options = opts || {}
 
 	const targets = {}
 
