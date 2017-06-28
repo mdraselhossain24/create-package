@@ -30,14 +30,14 @@ This is the only place where you can configure Create Package. If you don't know
 ## Node only package
 
 Go to your package.json and delete the browserslist field.
-```source-diff
+```diff
 -   "browserslist": [
 -       "last 2 versions"
 -   ]
 ```
 
 After that you can specify which node versions you want to support with the `engines.node` field.
-```source-diff
+```diff
     "engines": {
 -       "node": ">= 4"
 +       "node": ">= 6"
@@ -47,14 +47,14 @@ After that you can specify which node versions you want to support with the `eng
 ## Web only package
 
 Go to your package.json and delete the `engies.node` field.
-```source-diff
+```diff
 -   "engines": {
 -       "node": ">= 4"
 -   }
 ```
 
 After that you can specify which browsers you want to support with the browserslist.
-```source-diff
+```diff
     "browserslist": [
 -       "last 2 versions"
 +       "last 3 versions",
@@ -116,7 +116,7 @@ npm install -D husky lint-staged prettier
 
 Add the following line to `scripts` section:
 
-```source-diff
+```diff
     "scripts": {
 +       "precommit": "lint-staged",
         "start": "react-scripts start",
@@ -125,7 +125,7 @@ Add the following line to `scripts` section:
 
 Next we add a 'lint-staged' field to the `package.json`, for example:
 
-```source-diff
+```diff
     "dependencies": {
         // ...
     },
