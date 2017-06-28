@@ -43,25 +43,23 @@ function getConfig() {
 		override => supportedKeys.indexOf(override) === -1
 	)
 	if (unsupportedKeys.length) {
-		throw new Error(
-			format`
-				Out of the box, create-package only supports overriding these Jest options:
+		throw new Error(format`
+			Out of the box, create-package only supports overriding these Jest options:
 
-				${supportedKeys.map(key => `  - ${key}`).join('\n')}
+			${supportedKeys.map(key => `  - ${key}`).join('\n')}
 
-				These options in your package.json Jest configuration aren't currently supported by create-package:
+			These options in your package.json Jest configuration aren't currently supported by create-package:
 
-				${unsupportedKeys.map(key => `  - ${key}`).join('\n')}
+			${unsupportedKeys.map(key => `  - ${key}`).join('\n')}
 
-				If you wish to override other Jest options, you need to eject from the default setup.
-				You can do so by running:
+			If you wish to override other Jest options, you need to eject from the default setup.
+			You can do so by running:
 
-				  $ ${chalk.cyan('npm run eject')}
+			  $ ${chalk.cyan('npm run eject')}
 
-				Remember that this is a one-way operation.
-				Feel free to file an issue at create-package to discuss supporting more options out of the box.
-			`
-		)
+			Remember that this is a one-way operation.
+			Feel free to file an issue at create-package to discuss supporting more options out of the box.
+		`)
 	}
 	return Object.assign({}, config, overrides)
 }

@@ -68,30 +68,22 @@ const task = new Listr([
 	},
 	{
 		title: 'Creating package.json',
-		enabled: () => useYarn,
-		task: () => execa('yarn', ['init', '--yes'], { stdio: 'ignore' }),
-	},
-	{
-		title: 'Creating package.json',
-		enabled: () => !useYarn,
-		task: () => execa('npm', ['init', '--yes'], { stdio: 'ignore' }),
+		task: () =>
+			useYarn
+				? execa('yarn', ['init', '--yes'], { stdio: 'ignore' })
+				: execa('npm', ['init', '--yes'], { stdio: 'ignore' }),
 	},
 	{
 		title: 'Installing dependencies',
-		enabled: () => useYarn,
 		task: () =>
-			execa('yarn', ['add', '--dev', '--exact', 'package-scripts']),
-	},
-	{
-		title: 'Installing package dependencies',
-		enabled: () => !useYarn,
-		task: () =>
-			execa('npm', [
-				'install',
-				'--save-dev',
-				'--save-exact',
-				'package-scripts',
-			]),
+			useYarn
+				? execa('yarn', ['add', '--dev', '--exact', 'package-scripts'])
+				: execa('npm', [
+						'install',
+						'--save-dev',
+						'--save-exact',
+						'package-scripts',
+					]),
 	},
 	{
 		title: 'Initializing project',

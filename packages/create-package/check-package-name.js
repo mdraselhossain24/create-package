@@ -21,15 +21,13 @@ function checkPackageName(packageName) {
 						.map(error => `  -  ${error}`)
 						.join('\n')
 
-					throw new Error(
-						format`
-							Could not create a package called "${chalk.red(
-								packageName
-							)}" because of npm naming restrictions:
+					throw new Error(format`
+						Could not create a package called "${chalk.red(
+							packageName
+						)}" because of npm naming restrictions:
 
-							${errorList}
-						`
-					)
+						${errorList}
+					`)
 				}
 			},
 		},
@@ -38,13 +36,11 @@ function checkPackageName(packageName) {
 			task: () =>
 				checkPackageAvailable(packageName).then(available => {
 					if (!available) {
-						throw new Error(
-							format`
-								The package name "${chalk.red(packageName)}" is already taken.
-								This means you can't publish this package to npm.
-								Please choose another package name :)
-							`
-						)
+						throw new Error(format`
+							The package name "${chalk.red(packageName)}" is already taken.
+							This means you can't publish this package to npm.
+							Please choose another package name :)
+						`)
 					}
 				}),
 		},

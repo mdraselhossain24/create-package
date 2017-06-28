@@ -22,12 +22,10 @@ function checkProjectDirectory(projectRoot) {
 			const safeDir = files.every(file => validFiles.indexOf(file) !== -1)
 
 			if (!safeDir) {
-				throw new Error(
-					format`
-	    				The directory "${projectRoot}" contains files that could conflict.
-	    				Please use a different path or rename the current directory.
-	    			`
-				)
+				throw new Error(format`
+    				The directory "${projectRoot}" contains files that could conflict.
+    				Please use a different path or rename the current directory.
+    			`)
 			}
 		})
 	)

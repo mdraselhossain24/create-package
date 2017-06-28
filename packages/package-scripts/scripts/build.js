@@ -56,15 +56,13 @@ const task = new Listr([
 				nodir: true,
 			})
 			if (tsFiles.length > 0 && !env.isTSProject) {
-				throw new Error(
-					format`
-						You have .ts files but TypeScript isn't installed.
-						If you want to use TypeScript you need to install it and create a tsconfig.json.
+				throw new Error(format`
+					You have .ts files but TypeScript isn't installed.
+					If you want to use TypeScript you need to install it and create a tsconfig.json.
 
-						  $ ${chalk.cyan('npm install --save-dev typescript')}
-						  $ ${chalk.cyan('echo {} > tsconfig.json')}
-					`
-				)
+					  $ ${chalk.cyan('npm install --save-dev typescript')}
+					  $ ${chalk.cyan('echo {} > tsconfig.json')}
+				`)
 			}
 		},
 	},

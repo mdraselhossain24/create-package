@@ -29,13 +29,11 @@ const task = new Listr(
 					'--color',
 					paths.root,
 				]).catch(error => {
-					throw new Error(
-						format`
-							ESLint failed:
+					throw new Error(format`
+						ESLint failed:
 
-							${error.stdout.trim()}
-						`
-					)
+						${error.stdout.trim()}
+					`)
 				})
 			},
 		},
@@ -51,13 +49,11 @@ const task = new Listr(
 					'always',
 					paths.root,
 				]).catch(error => {
-					throw new Error(
-						format`
-							Flow failed:
+					throw new Error(format`
+						Flow failed:
 
-							${error.stdout.trim()}
-						`
-					)
+						${error.stdout.trim()}
+					`)
 				})
 			},
 		},
@@ -71,13 +67,11 @@ const task = new Listr(
 			enabled: () => env.isTSProject,
 			task: () => {
 				return execa('tsc', ['--noEmit', '--pretty']).catch(error => {
-					throw new Error(
-						format`
-							TypeScript failed:
+					throw new Error(format`
+						TypeScript failed:
 
-							${error.stdout.trim()}
-						`
-					)
+						${error.stdout.trim()}
+					`)
 				})
 			},
 		},

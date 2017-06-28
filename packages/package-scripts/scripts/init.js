@@ -1,3 +1,5 @@
+// @remove-file-on-eject
+
 'use strict'
 
 const chalk = require('chalk')
@@ -8,7 +10,7 @@ const Listr = require('listr')
 const path = require('path')
 const paths = require('create-package-utils/paths')
 
-const ownRoot = path.join(__dirname, '..')
+const ownRoot = path.resolve(__dirname, '..')
 const templatePath = path.join(ownRoot, 'template')
 const useYarn = fs.existsSync(path.join(paths.root, 'yarn.lock'))
 const readmeExists = fs.existsSync(path.join(paths.root, 'Readme.md'))
@@ -17,19 +19,15 @@ function init(projectRoot, packageName, originalDirectory) {
 	return new Listr([
 		{
 			title: 'Installing babel-runtime',
-			enabled: () => useYarn,
-			task: () => execa('yarn', ['add', '--exact', 'babel-runtime']),
-		},
-		{
-			title: 'Installing babel-runtime',
-			enabled: () => !useYarn,
 			task: () =>
-				execa('npm', [
-					'install',
-					'--save',
-					'--save-exact',
-					'babel-runtime',
-				]),
+				useYarn
+					? execa('yarn', ['add', '--exact', 'babel-runtime'])
+					: execa('npm', [
+							'install',
+							'--save',
+							'--save-exact',
+							'babel-runtime',
+						]),
 		},
 		{
 			title: 'Updating package.json',
@@ -42,7 +40,7 @@ function init(projectRoot, packageName, originalDirectory) {
 						check: 'package-scripts check',
 						eject: 'package-scripts eject',
 						publish: 'package-scripts publish',
-						test: 'package-scripts test',
+						test: 'package-scripts test --watch',
 					},
 					main: 'lib/index.js',
 					module: 'es/index.js',
