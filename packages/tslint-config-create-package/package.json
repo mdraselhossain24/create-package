@@ -1,0 +1,17 @@
+{
+	"name": "tslint-config-create-package",
+	"version": "0.42.0",
+	"description": "TSLint config used by Create Package",
+	"main": "config.js",
+	"keywords": [
+		"create-package"
+	],
+	"author": "Konstantin Pschera <me@kons.ch>",
+	"license": "MIT",
+	"devDependencies": {
+		"tslint": "5.4.3"
+	},
+	"peerDependencies": {
+		"tslint": "5.4.3"
+	}
+}

@@ -1,0 +1,25 @@
+{
+	"name": "eslint-config-create-package",
+	"version": "0.42.0",
+	"description": "ESLint configuration used by Create Package",
+	"main": "config.js",
+	"keywords": [
+		"create-package"
+	],
+	"author": "Konstantin Pschera <me@kons.ch>",
+	"repository": "k15a/create-package",
+	"license": "MIT",
+	"dependencies": {
+		"create-package-utils": "0.42.0"
+	},
+	"peerDependencies": {
+		"babel-eslint": "7.2.3",
+		"eslint": "4.1.1",
+		"eslint-plugin-import": "2.6.0"
+	},
+	"devDependencies": {
+		"babel-eslint": "7.2.3",
+		"eslint": "4.1.1",
+		"eslint-plugin-import": "2.6.0"
+	}
+}
