@@ -57,7 +57,7 @@ Install Create Package once globally:
 ```
 npm install -g create-package
 ```
-Create Package support Node >= 4 and npm >= 3. You can use [n](https://github.com/tj/n) or [nvm](https://github.com/creationix/nvm) to switch Node versions between different projects.
+Create Package support `Node >= 4` and `npm >= 3`. You can use [n](https://github.com/tj/n) or [nvm](https://github.com/creationix/nvm) to switch Node versions between different projects.
 
 ## Usage
 

@@ -8,6 +8,9 @@ You can find the most recent version of this guide [here](https://github.com/fac
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [Table of Contents](#table-of-contents)
+- [Configuring Targets](#configuring-targets)
+	- [Node only package](#node-only-package)
+	- [Web only package](#web-only-package)
 - [Displaying Lint Output in your Editor](#displaying-lint-output-in-your-editor)
 - [Type Safety with TypeScript or Flow](#type-safety-with-typescript-or-flow)
 	- [Flow](#flow)
@@ -15,6 +18,49 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [Formatting your code with Prettier](#formatting-your-code-with-prettier)
 
 <!-- /TOC -->
+
+# Configuring Targets
+
+We use `browserslist` and the `engines.node` field in your package.json to tune the build steps for your needs. From default your package is supported by `Node >= 4` and the last 2 versions of every browser. This means should only use JS features which are supported by both environments. You may want to create a package only for node or for the web. You can do this by defining the specific environment you want to support.
+
+This is the only place where you can configure Create Package. If you don't know how `browserslist` or the `engines.node` field works check out the following links:
+- [Browserslist](https://github.com/ai/browserslist)
+- [Engines](https://docs.npmjs.com/files/package.json#engines)
+
+## Node only package
+
+Go to your package.json and delete the browserslist field.
+```source-diff
+-   "browserslist": [
+-       "last 2 versions"
+-   ]
+```
+
+After that you can specify which node versions you want to support with the `engines.node` field.
+```source-diff
+    "engines": {
+-       "node": ">= 4"
++       "node": ">= 6"
+    }
+```
+
+## Web only package
+
+Go to your package.json and delete the `engies.node` field.
+```source-diff
+-   "engines": {
+-       "node": ">= 4"
+-   }
+```
+
+After that you can specify which browsers you want to support with the browserslist.
+```source-diff
+    "browserslist": [
+-       "last 2 versions"
++       "last 3 versions",
++       "ie 9"
+    ]
+```
 
 # Displaying Lint Output in your Editor
 
