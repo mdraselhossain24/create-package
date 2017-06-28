@@ -114,13 +114,21 @@ const task = new Listr([
 		title: 'Creating UMD bundle',
 		enabled: () => env.isWebProject,
 		task: () =>
-			Promise.all([
-				rollup({
-					minify: false,
-				}),
-				rollup({
-					minify: true,
-				}),
+			new Listr([
+				{
+					title: 'Production',
+					task: () =>
+						rollup({
+							minify: true,
+						}),
+				},
+				{
+					title: 'Development',
+					task: () =>
+						rollup({
+							minify: false,
+						}),
+				},
 			]),
 	},
 ])
