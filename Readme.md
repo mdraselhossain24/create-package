@@ -22,6 +22,7 @@ Create npm packages with no build configuration.
 - [Inspiration](#inspiration)
 	- [Create React App](#create-react-app)
 - [Thanks](#thanks)
+- [Related](#related)
 - [Support](#support)
 - [License](#license)
 
@@ -133,6 +134,11 @@ Create Package is heavily inspired and copied from Create React App. Check it ou
 - [Create React App](https://github.com/facebookincubator/create-react-app)
 - [Cole Chamberlain](https://github.com/cchamberlain) for giving me the `create-package` name
 - [Cory Simmons](https://github.com/corysimmons) for giving me the `package-scripts` name
+
+## Related
+
+- [create-npm-package](https://github.com/MatteoGabriele/create-npm-package) — boilerplate for npm packages
+- [generator-kcd-oss]https://github.com/kentcdodds/generator-kcd-oss — A yeoman generator for open source modules
 
 ## Support
 
