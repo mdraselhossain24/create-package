@@ -74,13 +74,6 @@ function createPreset(context, opts) {
 			require.resolve('babel-plugin-syntax-jsx'),
 			require.resolve('babel-plugin-transform-react-display-name')
 		)
-
-		if (!options.production) {
-			plugins.push(
-				require.resolve('babel-plugin-transform-react-jsx-source'),
-				require.resolve('babel-plugin-transform-react-jsx-self')
-			)
-		}
 	}
 
 	if (options.modules !== false) {

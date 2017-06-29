@@ -8,8 +8,8 @@ const fs = require('fs-extra')
 const globby = require('globby')
 const Listr = require('listr')
 const paths = require('create-package-utils/paths')
-const typescript = require('./utils/typescript')
 const rollup = require('./utils/rollup')
+const typescript = require('./utils/typescript')
 
 const esmConfig = {
 	presets: [

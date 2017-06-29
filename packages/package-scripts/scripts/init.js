@@ -3,9 +3,9 @@
 'use strict'
 
 const chalk = require('chalk')
+const execa = require('execa')
 const format = require('create-package-utils/format')
 const fs = require('fs-extra')
-const execa = require('execa')
 const Listr = require('listr')
 const path = require('path')
 const paths = require('create-package-utils/paths')

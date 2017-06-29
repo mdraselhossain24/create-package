@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = function format() {
+function format() {
 	const args = Array.from(arguments)
 	const strings = args[0]
 	const values = args.slice(1)
@@ -22,3 +22,5 @@ module.exports = function format() {
 
 	return dedentedString.trim()
 }
+
+module.exports = format
