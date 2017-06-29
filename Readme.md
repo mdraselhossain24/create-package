@@ -121,7 +121,7 @@ Running `npm run eject` copies all the configuration files and the transitive de
 
 - **Types with Flow and TS** — Easily add support for TypeScript and Flow.
 
-- **No Lock-In:** — You can "eject" to a custom setup at any time. Run a single command, and all the configuration and build dependencies will be moved directly into your project, so you can pick up right where you left off.
+- **No Lock-In** — You can "eject" to a custom setup at any time. Run a single command, and all the configuration and build dependencies will be moved directly into your project, so you can pick up right where you left off.
 
 ## Inspiration
 
@@ -138,7 +138,7 @@ Create Package is heavily inspired and copied from Create React App. Check it ou
 ## Related
 
 - [create-npm-package](https://github.com/MatteoGabriele/create-npm-package) — boilerplate for npm packages
-- [generator-kcd-oss]https://github.com/kentcdodds/generator-kcd-oss — A yeoman generator for open source modules
+- [generator-kcd-oss](https://github.com/kentcdodds/generator-kcd-oss) — A yeoman generator for open source modules
 
 ## Support
 
