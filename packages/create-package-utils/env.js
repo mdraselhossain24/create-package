@@ -8,6 +8,7 @@ const paths = require('./paths')
 const semver = require('semver')
 
 const pkg = require(paths.pkg)
+const useYarn = fs.existsSync(paths.yarnLock)
 
 // We use the engines.node field in the package.json to check which node
 // versions we need to support so we only transpile neccessary features.
@@ -128,6 +129,7 @@ if (flowInDependencies && !flowConfigExists) {
 
 module.exports = {
 	pkg,
+	useYarn,
 	supportedNodes,
 	supportedBrowsers,
 	isNodeProject,

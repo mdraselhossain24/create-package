@@ -3,6 +3,7 @@
 'use strict'
 
 const chalk = require('chalk')
+const env = require('create-package-utils/env')
 const execa = require('execa')
 const format = require('create-package-utils/format')
 const fs = require('fs-extra')
@@ -14,7 +15,6 @@ const promptly = require('promptly')
 const write = require('create-package-utils/write')
 
 const ownRoot = path.resolve(__dirname, '..')
-const useYarn = fs.existsSync(path.join(paths.root, 'yarn.lock'))
 
 const ownPackage = require(path.join(ownRoot, 'package.json'))
 const ownDependencies = ownPackage.dependencies || {}
@@ -104,8 +104,8 @@ function updatePackage() {
 					return `${dependency}@${version}`
 				})
 
-				return useYarn
-					? execa('yarn', ['add', '--dev'].concat(dependencies))
+				return env.useYarn
+					? env.useYarn('yarn', ['add', '--dev'].concat(dependencies))
 					: execa('npm', ['install', '-D'].concat(dependencies))
 			},
 		},
@@ -139,7 +139,7 @@ function updatePackage() {
 		{
 			title: 'Uninstalling package-scripts',
 			task: () =>
-				useYarn
+				env.useYarn
 					? execa('yarn', ['remove', ownPackage.name])
 					: execa('npm', [
 							'uninstall',

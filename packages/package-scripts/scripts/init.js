@@ -12,7 +12,7 @@ const paths = require('create-package-utils/paths')
 
 const ownRoot = path.resolve(__dirname, '..')
 const templatePath = path.join(ownRoot, 'template')
-const useYarn = fs.existsSync(path.join(paths.root, 'yarn.lock'))
+const useYarn = fs.existsSync(paths.yarnLock)
 const readmeExists = fs.existsSync(path.join(paths.root, 'Readme.md'))
 
 function init(projectRoot, packageName, originalDirectory) {

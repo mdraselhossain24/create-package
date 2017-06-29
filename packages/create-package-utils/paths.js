@@ -10,6 +10,7 @@ const es = resolvePath('es')
 const dist = resolvePath('dist')
 const compiled = resolvePath('compiled')
 const pkg = resolvePath('package.json')
+const yarnLock = resolvePath('yarn.lock')
 const flowConfig = resolvePath('.flowconfig')
 const tsConfig = resolvePath('tsconfig.json')
 const index = {
@@ -32,6 +33,7 @@ module.exports = {
 	dist,
 	compiled,
 	pkg,
+	yarnLock,
 	flowConfig,
 	tsConfig,
 	index,
