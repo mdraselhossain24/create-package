@@ -12,6 +12,8 @@ const paths = require('create-package-utils/paths')
 const rollup = require('rollup')
 
 function createBundle(options) {
+	env.check()
+
 	const entry = paths.index.es
 	const extension = options.minify ? '.min.js' : '.js'
 	const moduleName = pascalCase(env.pkg.name)

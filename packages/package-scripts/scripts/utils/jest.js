@@ -6,8 +6,10 @@ const format = require('create-package-utils/format')
 const paths = require('create-package-utils/paths')
 
 function getConfig() {
-	const extensions = /* env.isTSProject ? '{js,ts,tsx}' : */ '{js}'
-	const moduleFileExtensions = /* env.isTSProject
+	env.check()
+
+	const extensions = /* env.features.ts ? '{js,ts,tsx}' : */ '{js}'
+	const moduleFileExtensions = /* env.features.ts
 		? ['js', 'json', 'ts', 'tsx']
 		:  */ [
 		'js',
@@ -18,7 +20,7 @@ function getConfig() {
 		moduleFileExtensions,
 		collectCoverageFrom: [`src/**/*.${extensions}`],
 		rootDir: paths.root,
-		testEnvironment: env.isWebProject ? 'jsdom' : 'node',
+		testEnvironment: env.targets.web ? 'jsdom' : 'node',
 		testMatch: [
 			`**/__tests__/**/*.${extensions}`,
 			`**/test/**/*.${extensions}`,

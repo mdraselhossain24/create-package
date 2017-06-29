@@ -3,6 +3,7 @@
 'use strict'
 
 const chalk = require('chalk')
+const env = require('create-package-utils/env')
 const execa = require('execa')
 const format = require('create-package-utils/format')
 const fs = require('fs-extra')
@@ -12,7 +13,6 @@ const paths = require('create-package-utils/paths')
 
 const ownRoot = path.resolve(__dirname, '..')
 const templatePath = path.join(ownRoot, 'template')
-const useYarn = fs.existsSync(paths.yarnLock)
 const readmeExists = fs.existsSync(path.join(paths.root, 'Readme.md'))
 
 function init(projectRoot, packageName, originalDirectory) {
@@ -20,7 +20,7 @@ function init(projectRoot, packageName, originalDirectory) {
 		{
 			title: 'Installing babel-runtime',
 			task: () =>
-				useYarn
+				env.useYarn
 					? execa('yarn', ['add', '--exact', 'babel-runtime'])
 					: execa('npm', [
 							'install',
@@ -70,13 +70,17 @@ function init(projectRoot, packageName, originalDirectory) {
 					path.relative(originalDirectory, paths.root) || '.'
 
 				const commands = {
-					test: chalk.cyan(useYarn ? 'yarn test' : 'npm test'),
-					build: chalk.cyan(useYarn ? 'yarn build' : 'npm run build'),
-					eject: chalk.cyan(useYarn ? 'yarn eject' : 'npm run eject'),
-					check: chalk.cyan(
-						useYarn ? 'yarn run check' : 'npm run check'
+					test: chalk.cyan(env.useYarn ? 'yarn test' : 'npm test'),
+					build: chalk.cyan(
+						env.useYarn ? 'yarn build' : 'npm run build'
 					),
-					cd: chalk.cyan('cd ' + relativePath),
+					eject: chalk.cyan(
+						env.useYarn ? 'yarn eject' : 'npm run eject'
+					),
+					check: chalk.cyan(
+						env.useYarn ? 'yarn run check' : 'npm run check'
+					),
+					cd: chalk.cyan('cd ' + (relativePath || '.')),
 				}
 
 				context.log = format`

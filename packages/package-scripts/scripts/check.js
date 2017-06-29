@@ -10,6 +10,10 @@ const resolveFrom = require('resolve-from')
 const task = new Listr(
 	[
 		{
+			title: 'Checking environment',
+			task: env.check,
+		},
+		{
 			title: 'ESLint',
 			task: () => {
 				const config = require.resolve('eslint-config-create-package')
@@ -39,7 +43,7 @@ const task = new Listr(
 		},
 		{
 			title: 'Flow',
-			enabled: () => env.isFlowProject,
+			enabled: () => env.features.flow,
 			task: () => {
 				const flow = require(resolveFrom(paths.root, 'flow-bin'))
 
@@ -64,7 +68,7 @@ const task = new Listr(
 		},
 		{
 			title: 'TypeScript',
-			enabled: () => env.isTSProject,
+			enabled: () => env.features.ts,
 			task: () => {
 				return execa('tsc', ['--noEmit', '--pretty']).catch(error => {
 					throw new Error(format`

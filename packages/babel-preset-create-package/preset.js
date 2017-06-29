@@ -21,16 +21,18 @@ function getLowestNodeVersion(range) {
 }
 
 function createPreset(context, opts) {
+	env.check()
+
 	const options = opts || {}
 
 	const targets = {}
 
-	if (env.isWebProject) {
-		targets.browsers = env.supportedBrowsers
+	if (env.targets.web) {
+		targets.browsers = env.supported.browsers
 	}
 
-	if (env.isNodeProject) {
-		targets.node = getLowestNodeVersion(env.supportedNodes)
+	if (env.targets.node) {
+		targets.node = getLowestNodeVersion(env.supported.nodes)
 	}
 
 	/**
@@ -47,7 +49,7 @@ function createPreset(context, opts) {
 		],
 	]
 
-	if (env.isFlowProject) {
+	if (env.features.flow) {
 		presets.push(require.resolve('babel-preset-flow'))
 	}
 
@@ -68,7 +70,7 @@ function createPreset(context, opts) {
 		],
 	]
 
-	if (env.isReactProject) {
+	if (env.features.react) {
 		plugins.push(
 			require.resolve('babel-plugin-transform-react-jsx'),
 			require.resolve('babel-plugin-syntax-jsx'),

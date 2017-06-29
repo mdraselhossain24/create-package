@@ -35,9 +35,13 @@ const cjsConfig = {
 
 const task = new Listr([
 	{
+		title: 'Checking environment',
+		task: env.check,
+	},
+	{
 		title: 'Checking files',
 		task: () => {
-			if (env.isWebProject) {
+			if (env.targets.web) {
 				const entryExists =
 					fs.existsSync(paths.index.js) ||
 					fs.existsSync(paths.index.ts) ||
@@ -55,7 +59,7 @@ const task = new Listr([
 				root: paths.src,
 				nodir: true,
 			})
-			if (tsFiles.length > 0 && !env.isTSProject) {
+			if (tsFiles.length > 0 && !env.features.ts) {
 				throw new Error(format`
 					You have .ts files but TypeScript isn't installed.
 					If you want to use TypeScript you need to install it and create a tsconfig.json.
@@ -89,7 +93,7 @@ const task = new Listr([
 					},
 					{
 						title: 'to ES Modules directory',
-						enabled: () => env.isWebProject,
+						enabled: () => env.targets.web,
 						task: () =>
 							fs.copy(paths.src, paths.es, {
 								filter: filterAssets,
@@ -107,12 +111,12 @@ const task = new Listr([
 	},
 	{
 		title: 'Compiling TypeSript files',
-		enabled: () => env.isTSProject,
+		enabled: () => env.features.ts,
 		task: compileTS,
 	},
 	{
 		title: 'Creating UMD bundle',
-		enabled: () => env.isWebProject,
+		enabled: () => env.targets.web,
 		task: () =>
 			new Listr([
 				{
@@ -148,7 +152,7 @@ function compileJS(sourceDir) {
 				},
 				{
 					title: 'to ES Modules directory',
-					enabled: () => env.isWebProject,
+					enabled: () => env.targets.web,
 					task: () =>
 						babel.transpileDir(sourceDir, paths.es, esmConfig),
 				},

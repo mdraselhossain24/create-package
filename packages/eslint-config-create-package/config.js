@@ -2,6 +2,8 @@
 
 const env = require('create-package-utils/env')
 
+env.check()
+
 const config = {
 	// Use babel-eslint to parse async/await
 	parser: 'babel-eslint',
@@ -16,13 +18,13 @@ const config = {
 	},
 	// Set env based on create-package env
 	env: {
-		browser: !env.isNodeProject,
-		node: !env.isWebProject,
+		browser: !env.targets.node,
+		node: !env.targets.web,
 		commonjs: true,
-		'shared-node-browser': env.isUniversalProject,
+		'shared-node-browser': env.targets.universal,
 		es6: true,
-		worker: env.isWebProject,
-		serviceworker: env.isWebProject,
+		worker: env.targets.web,
+		serviceworker: env.targets.web,
 		jest: true,
 	},
 	plugins: ['import'],
@@ -399,7 +401,7 @@ const config = {
 		'import/no-amd': 'error',
 
 		// No Node.js builtin modules.
-		'import/no-nodejs-modules': !env.isWebProject ? 'off' : 'error',
+		'import/no-nodejs-modules': !env.targets.web ? 'off' : 'error',
 	},
 }
 
