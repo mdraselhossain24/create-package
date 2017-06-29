@@ -5,12 +5,13 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 # Table of Contents
 
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+<!-- TOC depthFrom:1 depthTo:3 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [Table of Contents](#table-of-contents)
 - [Configuring Targets](#configuring-targets)
 	- [Node only package](#node-only-package)
 	- [Web only package](#web-only-package)
+- [Checking your package before publishing](#checking-your-package-before-publishing)
 - [Displaying Lint Output in your Editor](#displaying-lint-output-in-your-editor)
 - [Type Safety with TypeScript or Flow](#type-safety-with-typescript-or-flow)
 	- [Flow](#flow)
@@ -60,6 +61,19 @@ After that you can specify which browsers you want to support with the browsersl
 +       "last 3 versions",
 +       "ie 9"
     ]
+```
+
+# Checking your package before publishing
+
+If you want to check all your files and run you tests before you publish you can create a `prepublish` script in you package.json:
+
+```diff
+	"scripts": {
+		"build": "package-scripts build",
+		"check": "package-scripts check",
+		"test": "package-scripts test --watch",
++		"prepublish": "package-scripts check && package-scripts test && package-scripts build"
+	}
 ```
 
 # Displaying Lint Output in your Editor

@@ -1,7 +1,7 @@
 # Create Package
 
 Create npm packages with no build configuration.
-* [Getting Started](#getting-started) — How to create a new app.
+* [Getting Started](#getting-started) — How to create a new package.
 * [User Guide](https://github.com/k15a/create-package/blob/master/packages/package-scripts/template/Readme.md) — How to develop packages bootstrapped with Create Package.
 
 <details>
@@ -57,7 +57,7 @@ Install Create Package once globally:
 ```
 npm install -g create-package
 ```
-Create Package support `Node >= 4` and `npm >= 3`. You can use [n](https://github.com/tj/n) or [nvm](https://github.com/creationix/nvm) to switch Node versions between different projects.
+Create Package supports `Node >= 4` and `npm >= 3`. You can use [n](https://github.com/tj/n) or [nvm](https://github.com/creationix/nvm) to easily switch Node versions between different projects.
 
 ## Usage
 
@@ -89,6 +89,14 @@ This will run the Jest test runner in watch mode.
 ### `npm run build` or `yarn build`
 
 This will compile all your files and creates a UMD bundle if you want to support the web.
+
+#### What we do?
+
+We check which environments you want to support with browserslist and the `engines.node` field in you package.json.
+
+- **Node Environment** — We compile all your JS, Flow and TypeScript files to the lowest Node version you want to support to the lib directory.
+
+- **Web Environment** — In addition to the lib folder we also compile your files to an es directory which is the same but with ES modules instead of CommonJS modules for Rollup and WebPack. We also create a UMD bundle which you can use for script tags or unpkg.com.
 
 ### `npm run check` or `yarn run check`
 
