@@ -26,6 +26,7 @@
 		"globby": "6.1.0",
 		"jest": "20.0.4",
 		"listr": "0.12.0",
+		"np": "2.16.0",
 		"pascal-case": "2.0.1",
 		"promptly": "2.2.0",
 		"replace-ext": "1.0.0",

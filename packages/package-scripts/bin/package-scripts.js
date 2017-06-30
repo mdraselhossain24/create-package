@@ -13,6 +13,7 @@ switch (script) {
 	case 'check':
 	case 'eject':
 	case 'init':
+	case 'publish':
 	case 'test': {
 		try {
 			execa.sync(
