@@ -2,7 +2,6 @@
 
 'use strict'
 
-const chalk = require('chalk')
 const checkPackageName = require('./check-package-name')
 const checkProjectDirectory = require('./check-project-directory')
 const execa = require('execa')
@@ -14,13 +13,13 @@ const updateNotifier = require('update-notifier')
 
 const cli = meow(`
 	Usage
-	  $ ${chalk.cyan('create-package <package-name>')}
+	  $ {cyan create-package <package-name>}
 
 	Examples
-	  $ ${chalk.cyan('create-package my-awesome-package')}
+	  $ {cyan create-package my-awesome-package}
 
 	If you have any problems, do not hesitate to file an issue:
-	${chalk.cyan('https://githup.com/k15a/create-package/issues/new')}
+	{cyan https://githup.com/k15a/create-package/issues/new}
 
 	Keep smiling 😊  and stay awesome! 🌈
 `)
@@ -39,11 +38,11 @@ const projectPath = cli.input[0]
 if (typeof projectPath === 'undefined') {
 	console.log(format`
 		Please specify the package name:
-		  $ ${chalk.cyan('create-package <package-name>')}
+		  $ {cyan create-package <package-name>}
 
 		For example:
-		  $ ${chalk.cyan('create-package my-awesome-package')}
-		  $ ${chalk.cyan('create-package packages/my-awesome-package')}
+		  $ {cyan create-package my-awesome-package}
+		  $ {cyan create-package packages/my-awesome-package}
 
 		Run "create-package --help" to see all options.
 	`)

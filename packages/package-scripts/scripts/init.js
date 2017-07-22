@@ -84,25 +84,25 @@ function init(projectRoot, packageName, originalDirectory) {
 				}
 
 				context.log = format`
-					Successfully created "${chalk.green(packageName)}" at ${paths.root}
+					Successfully created "{green ${packageName}}" at ${paths.root}
 					Inside that directory, you can run several commands:
 
-					${commands.test}
+					{cyan ${commands.test}}
 					  Starts the test runner.
 
-					${commands.build}
+					{cyan ${commands.build}}
 					  Builds your package.
 
-					${commands.eject}
+					{cyan ${commands.eject}}
 					  Removes this tool and copies build dependencies, configuration files and scripts into the app directory.
 					  If you do this, you can’t go back!
 
-					${commands.check}
+					{cyan ${commands.check}}
 					  Typechecks and lints your code.
 
 					We suggest that you begin by typing:
-					  $ ${commands.cd}
-					  $ ${commands.test}
+					  $ {cyan ${commands.cd}}
+					  $ {cyan ${commands.test}}
 
 					Please tell us what you're creating with create-package.
 					Keep smiling 😊  and stay awesome! 🌈

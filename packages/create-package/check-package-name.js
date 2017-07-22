@@ -1,6 +1,5 @@
 'use strict'
 
-const chalk = require('chalk')
 const checkPackageAvailable = require('npm-name')
 const format = require('create-package-utils/format')
 const Listr = require('listr')
@@ -22,9 +21,7 @@ function checkPackageName(packageName) {
 						.join('\n')
 
 					throw new Error(format`
-						Could not create a package called "${chalk.red(
-							packageName
-						)}" because of npm naming restrictions:
+						Could not create a package called "{red ${packageName}}" because of npm naming restrictions:
 
 						${errorList}
 					`)
@@ -37,7 +34,7 @@ function checkPackageName(packageName) {
 				checkPackageAvailable(packageName).then(available => {
 					if (!available) {
 						throw new Error(format`
-							The package name "${chalk.red(packageName)}" is already taken.
+							The package name "{red ${packageName}}" is already taken.
 							This means you can't publish this package to npm.
 							Please choose another package name :)
 						`)

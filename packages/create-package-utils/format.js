@@ -1,15 +1,11 @@
 'use strict'
 
+const chalk = require('chalk')
+
 function format() {
 	const args = Array.from(arguments)
-	const strings = args[0]
-	const values = args.slice(1)
-
-	const string = values.reduce((acc, value, index) => {
-		return acc + value + strings[index + 1]
-	}, strings[0])
-
-	const match = strings.join('').match(/^[ \t]*(?=\S)/gm)
+	const string = chalk(args)
+	const match = args[0].join('').match(/^[ \t]*(?=\S)/gm)
 
 	if (!match) {
 		return string

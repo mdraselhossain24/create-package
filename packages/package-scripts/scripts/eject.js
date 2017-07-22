@@ -8,10 +8,10 @@ const execa = require('execa')
 const format = require('create-package-utils/format')
 const fs = require('fs-extra')
 const globby = require('globby')
+const inquirer = require('inquirer')
 const Listr = require('listr')
 const path = require('path')
 const paths = require('create-package-utils/paths')
-const promptly = require('promptly')
 const write = require('create-package-utils/write')
 
 const ownRoot = path.resolve(__dirname, '..')
@@ -150,17 +150,19 @@ function updatePackage() {
 	])
 }
 
-promptly
-	.confirm(
-		chalk.yellow(
-			'Are you sure you want to eject? This action can not be undone! y/N'
-		),
+inquirer
+	.prompt([
 		{
+			type: 'confirm',
+			name: 'proceed',
+			message: chalk.yellow(
+				'Are you sure you want to eject? This action can not be undone!'
+			),
 			default: false,
-		}
-	)
-	.then(answer => {
-		if (answer) {
+		},
+	])
+	.then(answers => {
+		if (answers.proceed) {
 			return task.run()
 		}
 

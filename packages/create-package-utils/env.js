@@ -1,7 +1,6 @@
 'use strict'
 
 const browserslist = require('browserslist')
-const chalk = require('chalk')
 const format = require('./format')
 const fs = require('fs-extra')
 const paths = require('./paths')
@@ -82,11 +81,11 @@ function check() {
 
 			If you want to use TypeScript you need to install it.
 
-			  $ ${chalk.cyan('npm install --save-dev typescript')}
+			  $ {cyan npm install --save-dev typescript}
 
 			If you don't want to use TypeScript remove the tsconfig.json.
 
-			  $ ${chalk.cyan('rm tsconfig.json')}
+			  $ {cyan rm tsconfig.json}
 		`)
 	}
 
@@ -96,11 +95,11 @@ function check() {
 
 			If you want to use TypeScript you need to create a tsconfig.json.
 
-			  $ ${chalk.cyan('echo {} > tsconfig.json')}
+			  $ {cyan echo {} > tsconfig.json}
 
 			If you don't want to use TypeScript uninstall it.
 
-			  $ ${chalk.cyan('npm uninstall --save-dev typescript')}
+			  $ {cyan npm uninstall --save-dev typescript}
 		`)
 	}
 
@@ -111,11 +110,11 @@ function check() {
 
 			If you want to use Flow you need to install it.
 
-			  $ ${chalk.cyan('npm install --save-dev flow-bin')}
+			  $ {cyan npm install --save-dev flow-bin}
 
 			If you don't want to use Flow remove the .flowconfig.
 
-			  $ ${chalk.cyan('rm .flowconfig')}
+			  $ {cyan rm .flowconfig}
 		`)
 	}
 
@@ -125,11 +124,11 @@ function check() {
 
 			If you want to use Flow you need to create a .flowconfig.
 
-			  $ ${chalk.cyan('touch .flowconfig')}
+			  $ {cyan touch .flowconfig}
 
 			If you don't want to use Flow uninstall it.
 
-			  $ ${chalk.cyan('npm uninstall --save-dev flow-bin')}
+			  $ {cyan npm uninstall --save-dev flow-bin}
 		`)
 	}
 }

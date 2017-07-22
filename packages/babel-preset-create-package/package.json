@@ -1,16 +1,14 @@
 {
 	"name": "babel-preset-create-package",
-	"version": "0.42.0",
+	"version": "1.0.0",
 	"description": "Babel preset used by Create Package",
 	"main": "preset.js",
-	"keywords": [
-		"create-package"
-	],
+	"keywords": ["create-package"],
 	"author": "Konstantin Pschera <me@kons.ch>",
 	"repository": "k15a/create-package",
 	"license": "MIT",
 	"devDependencies": {
-		"create-package-utils": "0.42.0"
+		"create-package-utils": "1.0.0"
 	},
 	"dependencies": {
 		"babel-plugin-dynamic-import-node": "1.0.2",
@@ -23,8 +21,9 @@
 		"babel-plugin-transform-react-jsx-self": "6.22.0",
 		"babel-plugin-transform-react-jsx-source": "6.22.0",
 		"babel-plugin-transform-runtime": "6.23.0",
-		"babel-preset-env": "1.5.2",
-		"babel-preset-flow": "6.23.0"
+		"babel-preset-env": "1.6.0",
+		"babel-preset-flow": "6.23.0",
+		"semver": "5.3.0"
 	},
 	"peerDependencies": {
 		"babel-runtime": "6.23.0"

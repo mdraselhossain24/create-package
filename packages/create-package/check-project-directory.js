@@ -23,7 +23,7 @@ function checkProjectDirectory(projectRoot) {
 
 			if (!safeDir) {
 				throw new Error(format`
-    				The directory "${projectRoot}" contains files that could conflict.
+    				The directory "{red ${projectRoot}}" contains files that could conflict.
     				Please use a different path or rename the current directory.
     			`)
 			}

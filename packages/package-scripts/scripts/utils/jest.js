@@ -1,6 +1,5 @@
 'use strict'
 
-const chalk = require('chalk')
 const env = require('create-package-utils/env')
 const format = require('create-package-utils/format')
 const paths = require('create-package-utils/paths')
@@ -57,7 +56,7 @@ function getConfig() {
 			If you wish to override other Jest options, you need to eject from the default setup.
 			You can do so by running:
 
-			  $ ${chalk.cyan('npm run eject')}
+			  $ {cyan npm run eject}
 
 			Remember that this is a one-way operation.
 			Feel free to file an issue at create-package to discuss supporting more options out of the box.
