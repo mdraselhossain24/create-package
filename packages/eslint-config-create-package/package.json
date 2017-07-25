@@ -8,7 +8,7 @@
 	"repository": "k15a/create-package",
 	"license": "MIT",
 	"dependencies": {
-		"create-package-utils": "1.0.0"
+		"create-package-utils": "^1.0.0"
 	},
 	"peerDependencies": {
 		"babel-eslint": "7.2.3",

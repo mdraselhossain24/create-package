@@ -8,7 +8,7 @@
 	"repository": "k15a/create-package",
 	"license": "MIT",
 	"devDependencies": {
-		"create-package-utils": "1.0.0"
+		"create-package-utils": "^1.0.0"
 	},
 	"dependencies": {
 		"babel-plugin-dynamic-import-node": "1.0.2",
