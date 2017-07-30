@@ -1,6 +1,6 @@
 {
 	"name": "create-package-utils",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Utilities used by Create Package",
 	"keywords": ["create-package"],
 	"author": "Konstantin Pschera <me@kons.ch>",
