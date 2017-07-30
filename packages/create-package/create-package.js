@@ -111,7 +111,7 @@ task
 	})
 	.catch(error => {
 		console.log()
-		console.log(error.message)
+		console.log(error)
 	})
 
 updateNotifier({

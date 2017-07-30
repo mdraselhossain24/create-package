@@ -80,7 +80,7 @@ function init(projectRoot, packageName, originalDirectory) {
 					check: chalk.cyan(
 						env.useYarn ? 'yarn run check' : 'npm run check'
 					),
-					cd: chalk.cyan('cd ' + (relativePath || '.')),
+					cd: chalk.cyan('cd ' + relativePath),
 				}
 
 				context.log = format`
