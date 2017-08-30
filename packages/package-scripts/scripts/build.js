@@ -1,7 +1,6 @@
 'use strict'
 
 const babel = require('./utils/babel')
-const chalk = require('chalk')
 const env = require('create-package-utils/env')
 const format = require('create-package-utils/format')
 const fs = require('fs-extra')
