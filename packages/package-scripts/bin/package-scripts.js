@@ -11,7 +11,6 @@ const args = process.argv.slice(3)
 switch (script) {
 	case 'build':
 	case 'check':
-	case 'eject':
 	case 'init':
 	case 'publish':
 	case 'test': {
@@ -25,12 +24,13 @@ switch (script) {
 			if (error.signal) {
 				if (error.signal === 'SIGKILL') {
 					console.log(format`
-						The build failed because the process exited too early.
-						This probably means the system ran out of memory or someone called "kill -9" on the process.
+						The script failed because the process exited too early.
+						This probably means the system ran out of memory
+						or someone called "kill -9" on the process.
 					`)
 				} else if (error.signal === 'SIGTERM') {
 					console.log(format`
-						The build failed because the process exited too early.
+						The script failed because the process exited too early.
 						Someone might have called "kill" or "killall",
 						or the system could be shutting down.
 					`)
@@ -42,7 +42,9 @@ switch (script) {
 		break
 	}
 	default:
-		console.log(`Unknown script "${script}".`)
-		console.log('Perhaps you need to update package-scripts?')
+		console.log(format`
+			Unknown script "{red ${script}}".
+			Perhaps you need to update package-scripts?
+		`)
 		break
 }
