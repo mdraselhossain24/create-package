@@ -1,6 +1,6 @@
 'use strict'
 
-const babili = require('rollup-plugin-babili')
+const babelMinify = require('rollup-plugin-babel-minify')
 const chalk = require('chalk')
 const commonjs = require('rollup-plugin-commonjs')
 const env = require('create-package-utils/env')
@@ -27,7 +27,7 @@ function createBundle(options) {
 	const plugins = [nodeResolve(), commonjs(), json()]
 
 	if (options.minify) {
-		plugins.push(babili())
+		plugins.push(babelMinify())
 	}
 
 	return rollup

@@ -7,9 +7,9 @@
 	"author": "Konstantin Pschera <me@kons.ch>",
 	"license": "MIT",
 	"devDependencies": {
-		"tslint": "5.5.0"
+		"tslint": "5.7.0"
 	},
 	"peerDependencies": {
-		"tslint": "5.5.0"
+		"tslint": "5.7.0"
 	}
 }

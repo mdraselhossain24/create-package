@@ -53,6 +53,9 @@ const config = {
 		// Disallows use of internal modules and namespaces.
 		'no-namespace': error,
 
+		// Disallows reassigning parameters.
+		'no-parameter-reassignment': warn,
+
 		// Disallows /// <reference path=> imports (use ES6-style imports instead).
 		'no-reference': error,
 
