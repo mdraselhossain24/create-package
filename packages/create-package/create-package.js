@@ -15,6 +15,9 @@ const cli = meow(`
 	Usage
 	  $ {cyan create-package <package-name>}
 
+	Options:
+	  --debug  Show debugging information
+
 	Examples
 	  $ {cyan create-package my-awesome-package}
 
@@ -111,7 +114,7 @@ task
 	})
 	.catch(error => {
 		console.log()
-		console.log(error)
+		console.log(cli.flags.debug ? error : error.message)
 	})
 
 updateNotifier({
