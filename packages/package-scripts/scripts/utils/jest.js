@@ -7,28 +7,24 @@ const paths = require('create-package-utils/paths')
 function getConfig() {
 	env.check()
 
-	const extensions = /* env.features.ts ? '{js,ts,tsx}' : */ '{js}'
-	const moduleFileExtensions = /* env.features.ts
-		? ['js', 'json', 'ts', 'tsx']
-		:  */ [
-		'js',
-		'json',
-	]
+	const extensions = env.features.ts ? ['js', 'ts', 'tsx'] : ['js']
+	const moduleFileExtensions = [...extensions, 'json']
+	const globExtensions = '{' + extensions.join(', ') + '}'
 
 	const config = {
 		moduleFileExtensions,
-		collectCoverageFrom: [`src/**/*.${extensions}`],
+		collectCoverageFrom: [`src/**/*.${globExtensions}`],
 		rootDir: paths.root,
 		testEnvironment: env.targets.web ? 'jsdom' : 'node',
 		testMatch: [
-			`**/__tests__/**/*.${extensions}`,
-			`**/test/**/*.${extensions}`,
-			`**/?(*.)(spec|test).${extensions}`,
+			`**/__tests__/**/*.${globExtensions}`,
+			`**/test/**/*.${globExtensions}`,
+			`**/?(*.)(spec|test).${globExtensions}`,
 		],
 		testPathIgnorePatterns: ['/node_modules/', '/lib/', '/es/', '/dist/'],
 		transform: {
 			'.js': require.resolve('./babel-jest'),
-			// '.(ts|tsx)': require.resolve('./ts-jest'),
+			'.(ts|tsx)': require.resolve('./ts-jest'),
 		},
 	}
 
@@ -53,12 +49,6 @@ function getConfig() {
 
 			${unsupportedKeys.map(key => `  - ${key}`).join('\n')}
 
-			If you wish to override other Jest options, you need to eject from the default setup.
-			You can do so by running:
-
-			  $ {cyan npm run eject}
-
-			Remember that this is a one-way operation.
 			Feel free to file an issue at create-package to discuss supporting more options out of the box.
 		`)
 	}
