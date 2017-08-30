@@ -1,8 +1,5 @@
-// @remove-file-on-eject
-
 'use strict'
 
-const chalk = require('chalk')
 const env = require('create-package-utils/env')
 const execa = require('execa')
 const format = require('create-package-utils/format')
@@ -38,7 +35,6 @@ function init(projectRoot, packageName, originalDirectory) {
 					scripts: {
 						build: 'package-scripts build',
 						check: 'package-scripts check',
-						eject: 'package-scripts eject',
 						publish: 'package-scripts publish',
 						test: 'package-scripts test --watch',
 					},
@@ -70,17 +66,10 @@ function init(projectRoot, packageName, originalDirectory) {
 					path.relative(originalDirectory, paths.root) || '.'
 
 				const commands = {
-					test: chalk.cyan(env.useYarn ? 'yarn test' : 'npm test'),
-					build: chalk.cyan(
-						env.useYarn ? 'yarn build' : 'npm run build'
-					),
-					eject: chalk.cyan(
-						env.useYarn ? 'yarn eject' : 'npm run eject'
-					),
-					check: chalk.cyan(
-						env.useYarn ? 'yarn run check' : 'npm run check'
-					),
-					cd: chalk.cyan('cd ' + relativePath),
+					test: env.useYarn ? 'yarn test' : 'npm test',
+					build: env.useYarn ? 'yarn build' : 'npm run build',
+					check: env.useYarn ? 'yarn run check' : 'npm run check',
+					cd: 'cd ' + relativePath,
 				}
 
 				context.log = format`
@@ -92,10 +81,6 @@ function init(projectRoot, packageName, originalDirectory) {
 
 					{cyan ${commands.build}}
 					  Builds your package.
-
-					{cyan ${commands.eject}}
-					  Removes this tool and copies build dependencies, configuration files and scripts into the app directory.
-					  If you do this, you can’t go back!
 
 					{cyan ${commands.check}}
 					  Typechecks and lints your code.

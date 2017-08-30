@@ -105,12 +105,6 @@ This will run ESLint to check for common errors. We don't want to stay in your w
 
 If you have TypeScript or Flow installed we also check for type errors with this command.
 
-## Converting to a Custom Setup
-
-If you’re a power user and you aren’t happy with the default configuration, you can "eject" from the tool and use it as a boilerplate generator.
-
-Running `npm run eject` copies all the configuration files and the transitive dependencies (Rollup, Babel, ESLint, etc) right into your project so you have full control over them. Commands like `npm start` and `npm run build` will still work, but they will point to the copied scripts so you can tweak them. At this point, you’re on your own.
-
 ## Philosophy
 
 - **One Dependency** — Nice developer experience and easy way to update your build tools.
@@ -120,8 +114,6 @@ Running `npm run eject` copies all the configuration files and the transitive de
 - **Latest JS Features** — You can use the latest JS features and we will compile them down to support older environments.
 
 - **Types with Flow and TS** — Easily add support for TypeScript and Flow.
-
-- **No Lock-In** — You can "eject" to a custom setup at any time. Run a single command, and all the configuration and build dependencies will be moved directly into your project, so you can pick up right where you left off.
 
 ## Inspiration
 
