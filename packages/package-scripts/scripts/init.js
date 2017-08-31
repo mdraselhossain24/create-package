@@ -1,6 +1,5 @@
 'use strict'
 
-const env = require('create-package-utils/env')
 const execa = require('execa')
 const format = require('create-package-utils/format')
 const fs = require('fs-extra')
@@ -12,12 +11,12 @@ const ownRoot = path.resolve(__dirname, '..')
 const templatePath = path.join(ownRoot, 'template')
 const readmeExists = fs.existsSync(path.join(paths.root, 'Readme.md'))
 
-function init(projectRoot, packageName, originalDirectory) {
+function init(projectRoot, packageName, originalDirectory, useYarn) {
 	return new Listr([
 		{
 			title: 'Installing babel-runtime',
 			task: () =>
-				env.useYarn
+				useYarn
 					? execa('yarn', ['add', '--exact', 'babel-runtime'])
 					: execa('npm', [
 							'install',
@@ -66,9 +65,9 @@ function init(projectRoot, packageName, originalDirectory) {
 					path.relative(originalDirectory, paths.root) || '.'
 
 				const commands = {
-					test: env.useYarn ? 'yarn test' : 'npm test',
-					build: env.useYarn ? 'yarn build' : 'npm run build',
-					check: env.useYarn ? 'yarn run check' : 'npm run check',
+					test: useYarn ? 'yarn test' : 'npm test',
+					build: useYarn ? 'yarn build' : 'npm run build',
+					check: useYarn ? 'yarn run check' : 'npm run check',
 					cd: 'cd ' + relativePath,
 				}
 

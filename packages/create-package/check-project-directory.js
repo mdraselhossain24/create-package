@@ -17,18 +17,19 @@ function checkProjectDirectory(projectRoot) {
 		'web.iml',
 	]
 
-	return fs.mkdirs(projectRoot).then(() =>
-		fs.readdir(projectRoot).then(files => {
+	return fs
+		.mkdirs(projectRoot)
+		.then(() => fs.readdir(projectRoot))
+		.then(files => {
 			const safeDir = files.every(file => validFiles.indexOf(file) !== -1)
 
 			if (!safeDir) {
 				throw new Error(format`
-    				The directory "{red ${projectRoot}}" contains files that could conflict.
-    				Please use a different path or rename the current directory.
-    			`)
+					The directory "{red ${projectRoot}}" contains files that could conflict.
+					Please use a different path or rename the current directory.
+				`)
 			}
 		})
-	)
 }
 
 module.exports = checkProjectDirectory

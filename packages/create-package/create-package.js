@@ -6,17 +6,20 @@ const checkPackageName = require('./check-package-name')
 const checkProjectDirectory = require('./check-project-directory')
 const execa = require('execa')
 const format = require('create-package-utils/format')
+const getPackageScripts = require('./get-package-scripts')
+const getPackageName = require('./get-package-name')
 const Listr = require('listr')
 const meow = require('meow')
 const path = require('path')
 const updateNotifier = require('update-notifier')
 
-const cli = meow(`
+const cli = meow(format`
 	Usage
 	  $ {cyan create-package <package-name>}
 
 	Options:
-	  --debug  Show debugging information
+	  --debug — Show debugging information
+	  --package-scripts — User alternative package-scripts
 
 	Examples
 	  $ {cyan create-package my-awesome-package}
@@ -55,6 +58,7 @@ if (typeof projectPath === 'undefined') {
 const originalDirectory = process.cwd()
 const projectRoot = path.resolve(projectPath)
 const packageName = path.basename(projectRoot)
+const packageScripts = getPackageScripts(cli.flags.packageScripts)
 
 const task = new Listr([
 	{
@@ -79,28 +83,34 @@ const task = new Listr([
 		title: 'Installing dependencies',
 		task: () =>
 			useYarn
-				? execa('yarn', ['add', '--dev', '--exact', 'package-scripts'])
+				? execa('yarn', ['add', '--dev', '--exact', packageScripts])
 				: execa('npm', [
 						'install',
 						'--save-dev',
 						'--save-exact',
-						'package-scripts',
+						packageScripts,
 					]),
 	},
 	{
 		title: 'Initializing project',
-		task: () => {
-			const scriptsPath = path.resolve(
-				process.cwd(),
-				'node_modules',
-				'package-scripts',
-				'scripts',
-				'init.js'
-			)
+		task: () =>
+			getPackageName(packageScripts).then(packageScriptsName => {
+				const scriptsPath = path.resolve(
+					process.cwd(),
+					'node_modules',
+					packageScriptsName,
+					'scripts',
+					'init.js'
+				)
 
-			const init = require(scriptsPath)
-			return init(projectRoot, packageName, originalDirectory)
-		},
+				const init = require(scriptsPath)
+				return init(
+					projectRoot,
+					packageName,
+					originalDirectory,
+					useYarn
+				)
+			}),
 	},
 ])
 

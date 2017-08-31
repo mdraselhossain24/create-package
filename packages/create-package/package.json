@@ -14,9 +14,13 @@
 		"create-package-utils": "^1.0.1",
 		"execa": "0.8.0",
 		"fs-extra": "4.0.1",
+		"hyperquest": "2.1.2",
 		"listr": "0.12.0",
 		"meow": "3.7.0",
 		"npm-name": "3.1.0",
+		"semver": "5.4.1",
+		"tar-pack": "3.4.0",
+		"tmp": "0.0.33",
 		"update-notifier": "2.2.0",
 		"validate-npm-package-name": "3.0.0"
 	}
