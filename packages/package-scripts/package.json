@@ -1,6 +1,6 @@
 {
 	"name": "package-scripts",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"description": "Configuration and scripts for Create Package",
 	"bin": {
 		"package-scripts": "bin/package-scripts.js"
@@ -13,11 +13,11 @@
 		"babel-core": "6.26.0",
 		"babel-eslint": "7.2.3",
 		"babel-jest": "20.0.3",
-		"babel-preset-create-package": "^1.0.1",
+		"babel-preset-create-package": "^1.1.0",
 		"chalk": "2.1.0",
-		"create-package-utils": "^1.0.1",
+		"create-package-utils": "^1.1.0",
 		"eslint": "4.5.0",
-		"eslint-config-create-package": "^1.0.1",
+		"eslint-config-create-package": "^1.1.0",
 		"eslint-plugin-import": "2.7.0",
 		"execa": "0.8.0",
 		"fs-extra": "4.0.1",
@@ -36,6 +36,6 @@
 		"rollup-plugin-node-resolve": "3.0.0",
 		"ts-jest": "20.0.13",
 		"tslint": "5.7.0",
-		"tslint-config-create-package": "^1.0.0"
+		"tslint-config-create-package": "^1.1.0"
 	}
 }

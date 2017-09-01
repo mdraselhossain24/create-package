@@ -1,6 +1,6 @@
 {
 	"name": "create-package",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"description": "Create npm package with zero build configuration",
 	"bin": {
 		"create-package": "create-package.js"
@@ -11,7 +11,7 @@
 	"repository": "k15a/create-package",
 	"license": "MIT",
 	"dependencies": {
-		"create-package-utils": "^1.0.1",
+		"create-package-utils": "^1.1.0",
 		"execa": "0.8.0",
 		"fs-extra": "4.0.1",
 		"hyperquest": "2.1.2",

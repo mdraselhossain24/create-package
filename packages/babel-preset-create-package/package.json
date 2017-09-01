@@ -1,6 +1,6 @@
 {
 	"name": "babel-preset-create-package",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"description": "Babel preset used by Create Package",
 	"main": "preset.js",
 	"keywords": ["create-package"],
@@ -20,7 +20,7 @@
 		"babel-plugin-transform-runtime": "6.23.0",
 		"babel-preset-env": "1.6.0",
 		"babel-preset-flow": "6.23.0",
-		"create-package-utils": "^1.0.1",
+		"create-package-utils": "^1.1.0",
 		"semver": "5.4.1"
 	},
 	"peerDependencies": {
