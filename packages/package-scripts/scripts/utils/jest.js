@@ -9,7 +9,7 @@ function getConfig() {
 
 	const extensions = env.features.ts ? ['js', 'ts', 'tsx'] : ['js']
 	const moduleFileExtensions = [...extensions, 'json']
-	const globExtensions = '{' + extensions.join(', ') + '}'
+	const globExtensions = '{' + extensions.join(',') + '}'
 
 	const config = {
 		moduleFileExtensions,

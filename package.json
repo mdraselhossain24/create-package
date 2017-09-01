@@ -6,14 +6,16 @@
 		"husky": "0.14.3",
 		"lerna": "2.1.2",
 		"lint-staged": "4.0.4",
-		"prettier": "1.6.1"
+		"prettier": "1.6.1",
+		"shelljs": "0.7.8"
 	},
 	"engines": {
 		"node": ">= 4"
 	},
 	"scripts": {
 		"lint": "eslint .",
-		"precommit": "lint-staged"
+		"precommit": "lint-staged",
+		"create-package": "node scripts/create-package"
 	},
 	"prettier": {
 		"printWidth": 80,
