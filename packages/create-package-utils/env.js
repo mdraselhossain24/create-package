@@ -95,7 +95,7 @@ function check() {
 
 			If you want to use TypeScript you need to create a tsconfig.json.
 
-			  $ {cyan echo {} > tsconfig.json}
+			  $ {cyan touch tsconfig.json}
 
 			If you don't want to use TypeScript uninstall it.
 
