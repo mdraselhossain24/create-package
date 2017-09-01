@@ -1,7 +1,8 @@
 'use strict'
 
+// Change this if we display warnings as well
 const warn = {
-	severity: 'warning',
+	severity: 'error',
 }
 
 const error = {

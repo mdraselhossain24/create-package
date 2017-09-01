@@ -64,7 +64,28 @@ const task = new Listr(
 		{
 			title: 'TSLint',
 			enabled: () => false,
-			task: () => 'TSLint',
+			task: () => {
+				const config = require.resolve('tslint-config-create-package')
+
+				return execa('tslint', [
+					'--config',
+					config,
+					'--exclude',
+					paths.lib,
+					'--exclude',
+					paths.es,
+					'--exclude',
+					paths.dist,
+					// '--color',
+					paths.root,
+				]).catch(error => {
+					throw new Error(format`
+						TSLint failed:
+
+						${error.stdout.trim()}
+					`)
+				})
+			},
 		},
 		{
 			title: 'TypeScript',
